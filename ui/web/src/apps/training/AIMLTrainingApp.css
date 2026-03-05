@@ -1,0 +1,790 @@
+/* File: src/apps/training/AIMLTrainingApp.css */
+
+/* =========================================
+   Dark "Digital Twins-style" theme
+   ========================================= */
+
+:root {
+  --bg0: #0b0d10;
+  --bg1: #0f1217;
+
+  --panel: rgba(255, 255, 255, 0.06);
+  --panel2: rgba(255, 255, 255, 0.04);
+
+  --stroke: rgba(255, 255, 255, 0.12);
+  --stroke2: rgba(255, 255, 255, 0.08);
+  --stroke3: rgba(255, 255, 255, 0.06);
+
+  --text: rgba(255, 255, 255, 0.92);
+  --muted: rgba(255, 255, 255, 0.65);
+  --muted2: rgba(255, 255, 255, 0.48);
+
+  --shadow1: 0 10px 30px rgba(0, 0, 0, 0.35);
+  --shadow2: 0 30px 80px rgba(0, 0, 0, 0.55);
+
+  --radius: 14px;
+  --radius2: 18px;
+
+  --btnBg: rgba(255, 255, 255, 0.08);
+  --btnBgHover: rgba(255, 255, 255, 0.12);
+
+  --primaryBg: rgba(255, 255, 255, 0.92);
+  --primaryText: #0b0d10;
+}
+
+/* =========================================
+   Page background
+   ========================================= */
+
+.tr-page {
+  min-height: 100vh;
+  background: radial-gradient(
+      1200px 600px at 20% 0%,
+      rgba(255, 255, 255, 0.08),
+      rgba(255, 255, 255, 0) 60%
+    ),
+    linear-gradient(180deg, var(--bg0) 0%, var(--bg1) 70%);
+  color: var(--text);
+  font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica,
+    Arial, "Apple Color Emoji", "Segoe UI Emoji";
+}
+
+/* =========================================
+   Header
+   ========================================= */
+
+.tr-header {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  padding: 0;
+  background: transparent;
+  border-bottom: 1px solid transparent;
+}
+
+.tr-headerInner {
+  max-width: 1700px; /* slightly wider so background/header breathes */
+  margin: 0 auto;
+  padding: 18px 18px 14px;
+  border-radius: 22px;
+  margin-top: 14px;
+
+  background: radial-gradient(
+      1000px 420px at 20% 0%,
+      rgba(255, 255, 255, 0.10),
+      rgba(255, 255, 255, 0) 65%
+    ),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.06), rgba(255, 255, 255, 0.03));
+  border: 1px solid var(--stroke2);
+  box-shadow: var(--shadow1);
+
+  display: flex;
+  gap: 14px;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  backdrop-filter: blur(10px);
+}
+
+.tr-headerLeft {
+  min-width: 320px;
+}
+
+.tr-h1 {
+  font-size: 22px;
+  font-weight: 800;
+  letter-spacing: -0.2px;
+}
+
+.tr-subtitle {
+  font-size: 13px;
+  color: var(--muted);
+  margin-top: 6px;
+}
+
+.tr-headerRight {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+/* =========================================
+   Layout
+   ========================================= */
+
+.tr-main {
+  width: 100%;
+  padding: 28px 10px; /* a touch wider than 4px so background feels broader */
+}
+
+.tr-grid {
+  max-width: 1800px;
+  margin: 0 auto;
+  display: grid;
+  gap: 18px;
+}
+
+@media (min-width: 1100px) {
+  .tr-grid {
+    max-width: 1420px;                 /* lock the overall canvas */
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 320px 720px 360px;
+    gap: 18px;
+    justify-content: center;
+    align-items: start;
+  }
+}
+
+.tr-colLeft,
+.tr-colMid,
+.tr-colRight {
+  width: 100%;
+  min-width: 0;   /* prevents children from forcing column wider */
+}
+
+/* =========================================
+   Cards
+   ========================================= */
+
+.tr-card {
+  border-radius: var(--radius2);
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.06),
+    rgba(255, 255, 255, 0.04)
+  );
+  border: 1px solid var(--stroke2);
+  box-shadow: var(--shadow1);
+  overflow: visible;
+}
+
+.tr-cardHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 16px;
+  border-bottom: 1px solid var(--stroke3);
+}
+
+.tr-cardTitle {
+  font-size: 13px;
+  font-weight: 800;
+  color: var(--text);
+  letter-spacing: 0.2px;
+  text-rendering: geometricPrecision;
+}
+
+.tr-cardRight {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--muted2);
+  font-size: 12px;
+}
+
+.tr-cardBody {
+  padding: 16px 16px 18px;
+  overflow: visible;
+}
+
+.tr-colMid .tr-card {
+  width: 100%;
+  max-width: 720px;   /* matches the middle column */
+  justify-self: center;
+}
+
+/* =========================================
+   Buttons / pills
+   ========================================= */
+
+.tr-btn {
+  border: 1px solid var(--stroke2);
+  background: var(--btnBg);
+  color: var(--text);
+  border-radius: 999px;
+  padding: 10px 14px;
+  cursor: pointer;
+  font-weight: 800;
+  font-size: 13px;
+}
+
+.tr-btn:hover {
+  background: var(--btnBgHover);
+  border-color: var(--stroke);
+}
+
+.tr-btnPrimary {
+  background: var(--primaryBg);
+  color: var(--primaryText);
+  border-color: transparent;
+  box-shadow: 0 10px 18px rgba(0, 0, 0, 0.35);
+}
+
+.tr-btnPrimary:hover {
+  background: rgba(255, 255, 255, 1);
+}
+
+.tr-btnSecondary {
+  background: rgba(255, 255, 255, 0.06);
+}
+
+.tr-btnSm {
+  padding: 7px 11px;
+  font-size: 12px;
+}
+
+.tr-btnXs {
+  padding: 6px 10px;
+  font-size: 11px;
+}
+
+.tr-pill {
+  display: inline-flex;
+  align-items: center;
+  border: 1px solid var(--stroke2);
+  background: rgba(255, 255, 255, 0.05);
+  color: var(--muted);
+  padding: 7px 12px;
+  border-radius: 999px;
+  font-size: 12px;
+  line-height: 1;
+  white-space: nowrap;
+}
+
+/* =========================================
+   Workload list (left)
+   ========================================= */
+
+.tr-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.tr-workloadRow {
+  width: 100%;
+  text-align: left;
+  border: 1px solid var(--stroke2);
+  border-radius: var(--radius2);
+  background: rgba(255, 255, 255, 0.04);
+  padding: 14px 14px;
+  cursor: pointer;
+  transition: background 120ms ease, border-color 120ms ease;
+}
+
+.tr-workloadRow:hover {
+  background: rgba(255, 255, 255, 0.06);
+  border-color: var(--stroke);
+}
+
+.tr-workloadRowActive {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(255, 255, 255, 0.22);
+}
+
+.tr-workloadRowTop {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.tr-workloadRowMain {
+  min-width: 0;
+}
+
+.tr-workloadName {
+  font-size: 13px;
+  font-weight: 900;
+  color: var(--text);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.tr-pillRow {
+  margin-top: 10px;
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.tr-workloadRowActions {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+/* =========================================
+   Steps / sections (middle)
+   ========================================= */
+
+.tr-steps {
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+  overflow: visible;
+}
+
+/* ✅ Tighten the middle column rhythm */
+.tr-colMid .tr-steps {
+  gap: 18px;
+}
+
+.tr-sectionTitle {
+  margin-bottom: 12px;
+}
+
+.tr-sectionTitleRow {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.tr-sectionTitleMain {
+  font-size: 13px;
+  font-weight: 900;
+  color: var(--text);
+  text-rendering: geometricPrecision;
+}
+
+.tr-sectionTitleSub {
+  font-size: 12px;
+  color: var(--muted2);
+  white-space: nowrap;
+}
+
+.tr-divider {
+  height: 1px;
+  background: var(--stroke3);
+  margin-top: 10px;
+}
+
+.tr-dividerSoft {
+  height: 1px;
+  background: var(--stroke3);
+  margin: 12px 0;
+}
+
+/* =========================================
+   Form layout + inputs
+   ========================================= */
+
+/* ---- Grid rules ---- */
+
+.tr-formGrid2,
+.tr-formGrid3,
+.tr-formGrid4 {
+  display: grid;
+  gap: 14px;
+  grid-template-columns: 1fr;
+  align-items: start;
+}
+
+@media (min-width: 820px) {
+  .tr-formGrid2 {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .tr-formGrid3 {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+
+  /* ✅ FORCE 2 across only */
+  .tr-formGrid4 {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.tr-input,
+.tr-select {
+  width: 100%;
+  border: 1px solid var(--stroke2);
+  border-radius: 14px;
+  padding: 11px 12px;
+  font-size: 13px;
+  outline: none;
+
+  background: rgba(0, 0, 0, 0.22);
+  color: var(--text);
+
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.06);
+  box-sizing: border-box;
+  font-variant-numeric: tabular-nums;
+}
+
+.tr-select {
+  appearance: none;
+}
+
+.tr-input::placeholder {
+  color: rgba(255, 255, 255, 0.35);
+}
+
+.tr-input:focus,
+.tr-select:focus {
+  border-color: rgba(255, 255, 255, 0.22);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.08),
+    0 0 0 3px rgba(255, 255, 255, 0.10);
+}
+
+.tr-note {
+  margin-top: 10px;
+  font-size: 12px;
+  color: var(--muted);
+}
+
+/* =========================================
+   Right column (derived demand)
+   ========================================= */
+
+.tr-rightStack {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.tr-statGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+.tr-statTile {
+  border: 1px solid var(--stroke2);
+  background: rgba(0, 0, 0, 0.18);
+  border-radius: var(--radius2);
+  padding: 14px 14px 16px;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.05);
+}
+
+.tr-statLabel {
+  font-size: 11px;
+  font-weight: 900;
+  color: var(--muted2);
+  letter-spacing: 0.2px;
+}
+
+.tr-statValue {
+  margin-top: 10px;
+  font-size: 24px;
+  font-weight: 950;
+  line-height: 1.05;
+  color: var(--text);
+}
+
+.tr-panel {
+  border: 1px solid var(--stroke2);
+  border-radius: var(--radius2);
+  padding: 14px 14px 16px;
+  background: rgba(0, 0, 0, 0.18);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.05);
+}
+
+.tr-panelTint {
+  background: rgba(255, 255, 255, 0.06);
+}
+
+.tr-panelTitle {
+  font-size: 12px;
+  font-weight: 900;
+  color: rgba(255, 255, 255, 0.78);
+  margin-bottom: 10px;
+}
+
+.tr-kv {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  font-size: 13px;
+  color: rgba(255, 255, 255, 0.78);
+}
+
+.tr-kvRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.tr-strong {
+  font-weight: 950;
+  color: rgba(255, 255, 255, 0.92);
+}
+
+.tr-muted {
+  color: var(--muted);
+  font-size: 13px;
+}
+
+.tr-mutedSmall {
+  color: var(--muted2);
+  font-size: 12px;
+}
+
+.tr-hintBlock {
+  margin-top: 12px;
+  font-size: 13px;
+  color: rgba(255, 255, 255, 0.78);
+}
+
+.tr-hintLabel {
+  font-size: 11px;
+  font-weight: 950;
+  color: rgba(255, 255, 255, 0.55);
+  margin-bottom: 6px;
+  letter-spacing: 0.2px;
+}
+
+/* =========================================
+   Help popover + label row (works with FieldLabelRow)
+   ========================================= */
+
+.tr-field {
+  display: grid;
+  grid-template-rows: 36px auto; /* fixed label row for alignment */
+  row-gap: 10px;
+  align-content: start;
+}
+
+.tr-fieldTop {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  min-height: 36px;
+  padding-right: 140px; /* reserve hint space */
+  gap: 10px;
+}
+
+/* If your JSX still uses .tr-fieldLabel (legacy), keep it working */
+.tr-fieldLabel {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  line-height: 1.15;
+  max-width: 100%;
+  overflow: hidden;
+}
+
+/* New structure (recommended) */
+.tr-fieldLabelRow {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  position: relative;
+  z-index: 2;
+}
+
+.tr-fieldLabelText {
+  font-size: 12px;
+  font-weight: 900;
+  color: rgba(255, 255, 255, 0.80);
+  letter-spacing: 0.2px;
+  line-height: 1.15;
+  pointer-events: none; /* only text ignores clicks */
+}
+
+/* Hint does NOT affect layout */
+.tr-fieldHint {
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 11px;
+  color: var(--muted2);
+  white-space: nowrap;
+  text-align: right;
+  pointer-events: none;
+  opacity: 0.65;
+}
+
+/* Controls consistent height everywhere (alignment fix) */
+.tr-input,
+.tr-select {
+  height: 44px;
+  min-height: 44px;
+}
+
+/* Optional: slightly tighter controls ONLY in middle */
+.tr-colMid .tr-input,
+.tr-colMid .tr-select {
+  height: 42px;
+  min-height: 42px;
+  padding: 10px 12px;
+}
+
+/* Help trigger */
+.tr-helpWrap {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  flex: 0 0 auto;
+  z-index: 10000;
+  pointer-events: auto;
+}
+
+.tr-helpBtn {
+  width: 20px;
+  height: 20px;
+  border-radius: 999px;
+  border: 1px solid var(--stroke2);
+  background: rgba(255, 255, 255, 0.06);
+  color: rgba(255, 255, 255, 0.75);
+  font-weight: 950;
+  font-size: 12px;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  z-index: 10001;
+  pointer-events: auto;
+}
+
+.tr-helpBtn:hover {
+  background: rgba(255, 255, 255, 0.10);
+  border-color: var(--stroke);
+}
+
+/* Popover (opens inward, clamps to viewport) */
+.tr-helpPopover {
+  position: absolute;
+  top: 28px;
+  left: 0;
+
+  width: 340px;
+  max-width: min(340px, calc(100vw - 32px));
+
+  background: rgba(10, 12, 16, 0.96);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: var(--radius2);
+  box-shadow: var(--shadow2);
+  padding: 12px;
+  z-index: 10002;
+  backdrop-filter: blur(10px);
+  pointer-events: auto;
+}
+
+.tr-helpText {
+  white-space: pre-wrap;
+  font-size: 12px;
+  line-height: 1.35;
+  color: rgba(255, 255, 255, 0.80);
+}
+
+.tr-helpActions {
+  margin-top: 10px;
+  display: flex;
+  justify-content: flex-end;
+}
+
+/* =========================================
+   Safety: never clip the popover
+   ========================================= */
+
+.tr-card,
+.tr-cardBody,
+.tr-steps,
+.tr-field,
+.tr-fieldTop {
+  overflow: visible !important;
+}
+
+/* ===== Slim down middle column inputs ===== */
+
+.tr-colMid .tr-input,
+.tr-colMid .tr-select {
+  height: 36px !important;
+  min-height: 36px !important;
+  padding: 6px 10px !important;
+  font-size: 12.5px !important;
+  border-radius: 10px !important;
+}
+
+/* Slightly tighter spacing between label and control */
+.tr-colMid .tr-field {
+  row-gap: 6px !important;
+}
+
+/* Make label row slightly smaller too */
+.tr-colMid .tr-fieldLabel,
+.tr-colMid .tr-fieldLabelText {
+  font-size: 11.5px !important;
+}
+
+/* Reduce section vertical spacing */
+.tr-colMid .tr-steps {
+  gap: 16px !important;
+}
+
+/* Tighten grid gaps */
+.tr-colMid .tr-formGrid2,
+.tr-colMid .tr-formGrid3,
+.tr-colMid .tr-formGrid4 {
+  gap: 10px !important;
+}
+
+/* ===== Fix long hints (like "Comma separated...") in tight rows ===== */
+
+/* Stop reserving a huge blank area for hints in every field */
+.tr-fieldTop {
+  padding-right: 0 !important;
+}
+
+/* Only reserve space when there *is* a hint */
+.tr-fieldTop.hasHint {
+  padding-right: 140px !important; /* keep room for short hints like "0 = not specified" */
+}
+
+/* Clamp hint so it never overlaps labels */
+.tr-fieldHint {
+  max-width: 130px !important;
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
+  white-space: nowrap !important;
+  opacity: 0.65 !important;
+}
+
+/* In dense middle column: even tighter hint clamp */
+.tr-colMid .tr-fieldHint {
+  max-width: 110px !important;
+}
+
+/* ===== Prevent hint overlay: use grid instead of absolute hint ===== */
+
+.tr-fieldTop {
+  display: grid !important;
+  grid-template-columns: minmax(0, 1fr) auto !important; /* label | hint */
+  align-items: center !important;
+  gap: 10px !important;
+  min-height: 36px !important;
+  padding-right: 0 !important; /* no reservation needed anymore */
+}
+
+/* The label row should be allowed to shrink */
+.tr-fieldLabelRow,
+.tr-fieldLabel {
+  min-width: 0 !important;
+}
+
+/* Hint is now in its own column (no absolute) */
+.tr-fieldHint {
+  position: static !important;
+  transform: none !important;
+  justify-self: end !important;
+  max-width: 180px !important;
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
+  white-space: nowrap !important;
+  pointer-events: none !important;
+  opacity: 0.65 !important;
+}
+
+/* Middle column: slightly tighter hint cap */
+.tr-colMid .tr-fieldHint {
+  max-width: 140px !important;
+}

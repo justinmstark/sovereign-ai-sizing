@@ -8,3 +8,5 @@ for f in db/seed/*.sql; do
   echo " - $f"
   psql "$DB_URL" -f "$f"
 done
+
+docker compose exec db psql -U chip -d chipdb -f /seed/benchmarks.sql
